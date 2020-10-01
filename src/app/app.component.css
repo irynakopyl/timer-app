@@ -1,0 +1,74 @@
+@import '//fonts.googleapis.com/css?family=Bangers';
+html {
+    margin: 10px;
+}
+ .wrap {
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 height: 100vh;
+	 background: rgb(19, 19, 19);
+}
+ .time-to {
+	 text-align: center;
+	 font-family: Bangers;
+	 color: white;
+	 font-size: 35px;
+	 letter-spacing: 2px;
+}
+ .time-to span {
+	 display: block;
+	 font-size: 110px;
+	 color: whitesmoke;
+}
+
+.btn {
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 22px;
+    font-family: Bangers;
+    transition: .3s;
+    display: inline-block;
+  }
+  .start {
+    color: #84d8a7;
+    border: 2px #84d8a7 solid;
+  }
+  
+  .start:hover {
+    color: #fff;
+    background-color: #84d8a7;
+  }
+  .stop {
+    color: #e26658;
+    border: 2px #e26658 solid;
+  }
+  
+  .stop:hover {
+    color: #fff;
+    background-color: #e26658;
+  }
+
+  .wait {
+    color: #f0ad74;
+    border: 2px #f0ad74 solid;
+  }
+  
+  .wait:hover {
+    color: #fff;
+    background-color: #f0ad74;
+  }
+
+  .reset {
+    color: #f5d864;
+    border: 2px #f5d864 solid;
+  }
+  
+  .reset:hover {
+    color: #fff;
+    background-color: #f5d864;
+  }
+  
