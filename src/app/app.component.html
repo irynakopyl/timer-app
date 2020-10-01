@@ -3,7 +3,7 @@
     <span>{{time * 1000 | date:'HH:mm:ss':'UTC'}}</span>
     <button class="btn start" *ngIf="!isRunning" (click)='startTimer()'>Start Timer</button>
     <button class="btn stop" *ngIf="isRunning" (click)='stopTimer()'>Stop Timer</button>
-    <button class="btn wait" (dblclick)='pauseTimer()'>Wait</button>
+    <button id="wait" class="btn wait" >Wait</button>
     <button  class="btn reset" (click)='resetTimer()'>Reset</button>
   </div>
 </div>

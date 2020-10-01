@@ -1,35 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { interval, timer } from "rxjs";
 import { takeWhile } from 'rxjs/operators';
-
+import { fromEvent,  } from 'rxjs'; 
+import { map, bufferCount, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   numbers = interval(1000);
-  time: number = 0;
-  isRunning: boolean = false;
+  time = 0;
+  isRunning = false;
   takeFourNumbers = this.numbers.pipe(takeWhile(it => this.isRunning === true));
-  
-  startTimer() {
+  clickCount = 2;
+  clickTimespan = 300;
+  ngOnInit(): void{
+    const button = document.getElementById('wait');
+    fromEvent(button, 'click').pipe(
+      map(() => new Date().getTime()),
+      bufferCount(this.clickCount, 1),
+      filter((timestamps) => {
+        return timestamps[0] > new Date().getTime() - this.clickTimespan;
+      }))
+      .subscribe(() => {
+        this.pauseTimer();
+      });
+  }
+
+  startTimer(): void {
      this.isRunning = true;
      this.takeFourNumbers.subscribe(x =>  {
-     this.time++;}
+     this.time++;
+    }
     );
   }
 
-  pauseTimer() {
+  pauseTimer(): void {
     this.isRunning = false;
   }
 
-  resetTimer() {
+  resetTimer(): void {
     this.time = 0;
   }
-  
-  stopTimer(){
+
+  stopTimer(): void{
     this.pauseTimer();
     this.resetTimer();
   }
